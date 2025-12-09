@@ -33,7 +33,7 @@ IDE	                               VSCode
 
 
 📥 3. Clonar el proyecto
-git clone https://github.com/
+git clone https://github.com/JorgeParada/george-store.git
 cd georgestore
 
 🛠️ 4. Construcción e instalación
