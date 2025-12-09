@@ -19,5 +19,8 @@ spring:
         web-allow-others: true
 app:
   jwt:
-    secret: your-very-secure-secret-key-123456789123456
+    secret: my-very-secure-secret-key-123456789123456
     expiration-ms: 3600000
+
+client-service:
+  url: http://localhost:8080

@@ -5,10 +5,15 @@ import org.springframework.http.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.beans.factory.annotation.Value;
+
 
 @Component
 @RequiredArgsConstructor
 public class ClientApiClient {
+
+    @Value("${client-service.url}")
+    private String clientServiceUrl;
 
     private final RestTemplate restTemplate = new RestTemplate();
 
@@ -25,13 +30,12 @@ public class ClientApiClient {
 
             HttpEntity<Void> entity = new HttpEntity<>(headers);
 
-            ResponseEntity<String> res =
-                    restTemplate.exchange(
-                            "http://localhost:8080/clients/" + clientId,
-                            HttpMethod.GET,
-                            entity,
-                            String.class
-                    );
+            ResponseEntity<String> res = restTemplate.exchange(
+                    clientServiceUrl + "/clients/" + clientId,
+                    HttpMethod.GET,
+                    entity,
+                    String.class
+            );
 
             return res.getStatusCode().is2xxSuccessful();
 
